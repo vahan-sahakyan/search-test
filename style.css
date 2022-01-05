@@ -1,0 +1,13 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.search-area {
+  flex: 1;
+}
+
+.info {
+  flex: 1;
+}

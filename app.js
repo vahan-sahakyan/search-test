@@ -14,8 +14,15 @@ const data = [
   "Vlad",
   "Voskan",
   "Volodya",
-  "Verdana",
+  "Venera",
   "Smbat",
+  "Serob",
+  "Sargis",
+  "Suren",
+  "Simon",
+  "Srbuhi",
+  "Siranush",
+  "Spartak",
 ];
 
 info.innerHTML = `TEST DATA <br/><br/>`;
@@ -23,15 +30,13 @@ for (let i = 0; i < data.length; i++) {
   info.innerHTML += `${data[i]} <br/>`;
 }
 
-let typed = "";
 let result = [];
 
-input.oninput = function () {
+input.addEventListener("input", function () {
   list.innerHTML = "";
 
-  typed = input.value;
   for (let i = 0; i < data.length; i++) {
-    if (data[i].match(typed)) {
+    if (data[i].toLowerCase().indexOf(input.value.toLowerCase()) !== -1) {
       result.push(data[i]);
     }
   }
@@ -47,4 +52,4 @@ input.oninput = function () {
   }
 
   result = [];
-};
+});

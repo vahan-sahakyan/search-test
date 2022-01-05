@@ -1,13 +1,43 @@
+* {
+  font-family: sans-serif;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
-  gap: 10%;
 }
 
 .search-area {
   flex: 1;
+  margin: 40px 30px;
+}
+.input {
+  width: 100%;
+  border: 3px solid #aaa;
+  padding: 5px;
+  margin-right: 0;
+  outline: none;
+}
+.input:focus {
+  border: 3px solid #555;
+  transition: 500ms;
+}
+.input:not(:focus) {
+  transition: 500ms;
+}
+
+.items-list {
+  color: #444;
+  width: 100%;
+  background-color: #eee;
+  border: 3px solid #eee;
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0 5px;
 }
 
 .info {
   flex: 1;
+  margin: 40px 30px;
+  /*   text-align: right; */
 }

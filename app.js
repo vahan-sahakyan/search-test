@@ -2,9 +2,9 @@ const content = document.querySelector(".content");
 const info = document.querySelector(".info");
 const input = document.querySelector(".input");
 const list = document.querySelector(".items-list");
-// const data = ["q", "qw", "qwe", "qwer", "qwert", "qwerty"];
+const names1 = ["q", "qw", "qwe", "qwer", "qwert", "qwerty"];
 
-const data = [
+const names = [
   "Vahan",
   "Vardan",
   "Vahe",
@@ -23,33 +23,57 @@ const data = [
   "Srbuhi",
   "Siranush",
   "Spartak",
+  "asdasdasdasdasdasdasdasd",
 ];
 
-info.innerHTML = `TEST DATA <br/><br/>`;
-for (let i = 0; i < data.length; i++) {
-  info.innerHTML += `${data[i]} <br/>`;
+info.innerHTML = "<h3><span>TEST</span><strong>DATA</strong></h3>";
+for (const item of names) {
+  info.innerHTML += `<li>${item}</li>`;
 }
 
-let result = [];
+const isMatching = function (name, input) {
+  let normalizedInput = input
+    .toLowerCase()
+    .replaceAll(".", "")
+    .replaceAll(",", "")
+    .replaceAll(" ", "");
 
+  return (
+    name.toLowerCase().indexOf(normalizedInput) !== -1 &&
+    name.toLowerCase().startsWith(normalizedInput.slice("0"))
+  );
+};
+
+let results = [];
+let timeoutId;
 input.addEventListener("input", function () {
-  list.innerHTML = "";
-
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].toLowerCase().indexOf(input.value.toLowerCase()) !== -1) {
-      result.push(data[i]);
-    }
+  if (timeoutId) {
+    clearTimeout(timeoutId);
   }
-
-  // print the results in DOM
-  for (let i = 0; i < result.length; i++) {
-    list.innerHTML += `${result[i]} <br/>`;
-  }
-
-  // if no input reset output
   if (!input.value) {
     list.innerHTML = "";
+    clearTimeout(timeoutId);
   }
+  timeoutId = setTimeout(function () {
+    // resets previous output
+    list.innerHTML = "";
 
-  result = [];
+    // check if matching
+    for (const name of names) {
+      if (isMatching(name, input.value)) results.push(name);
+    }
+
+    // outputs each result to DOM
+    for (const result of results) {
+      list.innerHTML += `<li>${result}</li>`;
+    }
+
+    // if no input resets output
+    if (!input.value) {
+      list.innerHTML = "";
+      clearTimeout(timeoutId);
+    }
+
+    results = [];
+  }, 500);
 });

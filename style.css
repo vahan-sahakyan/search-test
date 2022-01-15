@@ -1,5 +1,12 @@
 * {
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+  color: #ccc;
 }
 
 .content {
@@ -12,14 +19,17 @@
   margin: 40px 30px;
 }
 .input {
+  font-size: 14px;
+  background-color: #333;
+  color: #ddd;
   width: 100%;
-  border: 3px solid #aaa;
+  border: 3px solid #555;
   padding: 5px;
   margin-right: 0;
   outline: none;
 }
 .input:focus {
-  border: 3px solid #555;
+  border: 3px solid #aaa;
   transition: 500ms;
 }
 .input:not(:focus) {
@@ -27,17 +37,42 @@
 }
 
 .items-list {
-  color: #444;
+  font-size: 14px;
+  color: #ddd;
   width: 100%;
-  background-color: #eee;
-  border: 3px solid #eee;
+  background-color: #444;
+  border: 3px solid #444;
   border-top: 0;
   border-bottom: 0;
-  padding: 0 5px;
+  padding: 0px 5px;
+  margin: 0;
+}
+
+h3 {
+  padding: 5px 0;
+  margin-bottom: 14px;
+}
+h3 span {
+  opacity: 0.6;
+  font-weight: 100;
+  padding-right: 2px;
+}
+h3 strong {
+  font-weight: 900;
+}
+
+li {
+  list-style: none;
+}
+.items-list li {
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
 }
 
 .info {
   flex: 1;
   margin: 40px 30px;
-  /*   text-align: right; */
+  text-align: right;
+  overflow: hidden;
 }

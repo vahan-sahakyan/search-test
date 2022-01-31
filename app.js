@@ -30,10 +30,9 @@ info.innerHTML = '<h3><span>TEST</span><strong>DATA</strong></h3>';
 names.forEach(name => (info.innerHTML += `<li>${name}</li>`));
 
 const isMatching = function (name, input) {
-  const normalizedInput = input.toLowerCase().trim().replaceAll('.', '');
-  const charsExceptSpace = new RegExp(/\S/);
+  const normalizedInput = input.toLowerCase().replaceAll('.', '').trim();
   return (
-    charsExceptSpace.test(normalizedInput) &&
+    normalizedInput &&
     name.toLowerCase().indexOf(normalizedInput) !== -1 &&
     name.toLowerCase().startsWith(normalizedInput.slice('0'))
   );

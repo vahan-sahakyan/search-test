@@ -3,8 +3,7 @@ const info = document.querySelector('.info');
 const input = document.querySelector('.input');
 const list = document.querySelector('.items-list');
 const names1 = ['q', 'qw', 'qwe', 'qwer', 'qwert', 'qwerty'];
-
-const names = [
+const names2 = [
   'Vahan',
   'Vardan',
   'Vahe',
@@ -26,8 +25,38 @@ const names = [
   'asdasdasdasd',
 ];
 
+const renderInfo = () => {
+  names.forEach(
+    name =>
+      (info.innerHTML += `
+        <div style="
+          text-align: right;
+          display: flex;
+          justify-content: end;
+        ">
+          <li class="names-item" style="
+            width: fit-content;
+            text-align: right;
+            border-bottom: 1px solid #fff3;
+            margin-right: 0;
+            white-space: nowrap;
+            margin-bottom:.3rem;
+          ">${name}</li>
+        </div>
+      `)
+  );
+};
+
+let data = [];
+let names = [];
+(async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  data = await res.json();
+  for (const user of data) names.push(user.name);
+  renderInfo();
+})();
+
 info.innerHTML = '<h3><span>TEST</span><strong>DATA</strong></h3>';
-names.forEach(name => (info.innerHTML += `<li>${name}</li>`));
 
 const isMatching = function (name, input) {
   const normalizedInput = input.toLowerCase().replaceAll('.', '').trim();
@@ -50,6 +79,7 @@ input.addEventListener('input', function () {
   timeoutId = setTimeout(function () {
     // resets previous output
     list.innerHTML = '';
+    console.log(data);
 
     // check if matching
     names.forEach(name => isMatching(name, input.value) && results.push(name));

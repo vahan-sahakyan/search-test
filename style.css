@@ -2,6 +2,7 @@
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -22,30 +23,22 @@ body {
   font-size: 14px;
   background-color: #222;
   color: #ddd;
-  width: 100%;
   border: 3px solid #555;
   padding: 5px;
   margin-right: 0;
   outline: none;
+  width: 43vw;
+  margin: 0;
 }
 .input:focus {
   border: 3px solid #aaa;
-  transition: 500ms;
-}
-.input:not(:focus) {
-  transition: 500ms;
 }
 
 .items-list {
   font-size: 14px;
   color: #ddd;
-  width: 100%;
+  width: 43vw;
   background-color: #272727;
-  border: 3px solid #272727;
-  border-top: 0;
-  border-bottom: 0;
-  padding: 0px 5px;
-  margin: 0;
 }
 
 h3 {
@@ -64,9 +57,20 @@ h3 strong {
 li {
   list-style: none;
 }
+.items-list li:hover {
+  background-color: #333;
+  border: 3px solid #333;
+  border-top: 0;
+  border-bottom: 0;
+  cursor: pointer;
+}
 .items-list li {
   list-style: none;
-  padding: 5px 0;
+  margin: 0;
+  border: 3px solid #272727;
+  border-top: 0;
+  border-bottom: 0;
+  padding: 5px;
   margin: 0;
 }
 
@@ -74,5 +78,9 @@ li {
   flex: 1;
   margin: 40px 30px;
   text-align: right;
-  overflow: hidden;
+}
+li.names-item:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #fff9 !important;
+  transition: 100ms;
 }
